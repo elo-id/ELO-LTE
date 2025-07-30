@@ -80,21 +80,31 @@ export default {
         "website",
         "hobby",
       ],
-      columnVisibility: JSON.parse(
-        localStorage.getItem("columnVisibility")
-      ) || {
-        id: true,
-        name: true,
-        email: true,
-        age: true,
-        city: true,
-        phone: true,
-        address: true,
-        company: true,
-        position: true,
-        website: true,
-        hobby: true,
-      },
+      columnVisibility: (() => {
+        const stored = localStorage.getItem("columnVisibility");
+        const parsed = stored ? JSON.parse(stored) : null;
+
+        // Ensure at least one column is visible
+        const fallback = {
+          id: true,
+          name: true,
+          email: true,
+          age: true,
+          city: true,
+          phone: true,
+          address: true,
+          company: true,
+          position: true,
+          website: true,
+          hobby: true,
+        };
+
+        if (!parsed || Object.values(parsed).every((v) => v === false)) {
+          return fallback;
+        }
+
+        return parsed;
+      })(),
     };
   },
   computed: {
@@ -164,12 +174,21 @@ export default {
       this.currentPage = 1;
     },
   },
-  mounted() {
-    const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
-    fetch(`${baseURL}/data/customdashboarddata.json`)
-      .then((response) => response.json())
-      .then((json) => (this.data = json))
-      .catch((error) => console.error("Error fetching data:", error));
+  async mounted() {
+    try {
+      const baseURL =
+        window.location.origin +
+        "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+      const response = await fetch(`${baseURL}/data/customdashboarddata.json`);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      this.data = await response.json();
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   },
 };
 </script>

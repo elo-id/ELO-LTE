@@ -159,20 +159,28 @@ export default {
       return Prism.highlight(this.libraryVersion, Prism.languages.js, "js");
     },
   },
-  mounted() {
-    Promise.all([
-      fetch("/snippets/mainjs.txt").then((res) => res.text()),
-      fetch("/snippets/vueconfigjs.txt").then((res) => res.text()),
-      fetch("/snippets/libraryversion.txt").then((res) => res.text()),
-    ]).then(([main, vue, libraryVersion]) => {
-      this.mainJs = main;
-      this.vueConfig = vue;
-      this.libraryVersion = libraryVersion;
+  async mounted() {
+    const baseURL =
+      window.location.origin +
+      "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte/snippets";
 
-      this.$nextTick(() => {
-        Prism.highlightAll();
+    Promise.all([
+      fetch(`${baseURL}/mainjs.txt`).then((res) => res.text()),
+      fetch(`${baseURL}/vueconfigjs.txt`).then((res) => res.text()),
+      fetch(`${baseURL}/libraryversion.txt`).then((res) => res.text()),
+    ])
+      .then(([main, vue, libraryVersion]) => {
+        this.mainJs = main;
+        this.vueConfig = vue;
+        this.libraryVersion = libraryVersion;
+
+        this.$nextTick(() => {
+          Prism.highlightAll();
+        });
+      })
+      .catch((error) => {
+        console.error("Error loading snippets:", error);
       });
-    });
   },
 };
 </script>

@@ -37,21 +37,33 @@ export default {
       this.showDropdown = !this.showDropdown;
     },
     toggleColumn(column) {
-      const updatedVisibility = { ...this.selected, [column]: !this.selected[column] };
-      this.$emit("input", updatedVisibility); // Emit perubahan ke parent
+      const updatedVisibility = {
+        ...this.selected,
+        [column]: !this.selected[column],
+      };
+
+      // Prevent all columns from being unchecked
+      const anyColumnVisible = Object.values(updatedVisibility).some((v) => v);
+
+      if (!anyColumnVisible) {
+        // Optional: show a warning or toast here
+        return;
+      }
+
+      this.$emit("input", updatedVisibility);
     },
     closeDropdown(event) {
       if (!this.$el.contains(event.target)) {
         this.showDropdown = false;
       }
-    }
+    },
   },
   mounted() {
     document.addEventListener("click", this.closeDropdown);
   },
   beforeDestroy() {
     document.removeEventListener("click", this.closeDropdown);
-  }
+  },
 };
 </script>
 

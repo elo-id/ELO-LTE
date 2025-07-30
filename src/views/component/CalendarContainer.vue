@@ -132,9 +132,13 @@ export default {
       return Prism.highlight(this.calendarCode, Prism.languages.js, "js");
     },
   },
-  mounted() {
+  async mounted() {
+    const baseURL =
+      window.location.origin +
+      "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte/snippets";
+
     Promise.all([
-      fetch("/snippets/calendar_code.txt").then((res) => res.text()),
+      fetch(`${baseURL}/calendar_code.txt`).then((res) => res.text()),
     ]).then(([calendarCode]) => {
       this.calendarCode = calendarCode;
 

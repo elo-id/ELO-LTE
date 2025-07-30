@@ -12,7 +12,7 @@
     "namespace": "elo",
     "id": "lte",
     "defaultLanguage": "en",
-    "build": 8,
+    "build": 2,
     "useEloSession": true,
     "devRedirect": "http://localhost:4200/",
     "devLogin": true,

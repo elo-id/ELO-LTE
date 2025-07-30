@@ -81,7 +81,8 @@ export default {
     const nameParam = this.$route.params.name;
 
     try {
-      const response = await fetch("/data/projectmanagerV2data.json");
+      const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+      const response = await fetch(`${baseURL}/data/projectmanagerdata.json`);
       const data = await response.json();
 
       this.project = data.projects.find((p) => p.name === nameParam);
