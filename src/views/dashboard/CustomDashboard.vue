@@ -165,7 +165,8 @@ export default {
     },
   },
   mounted() {
-    fetch("/data/customdashboarddata.json")
+    const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+    fetch(`${baseURL}/data/customdashboarddata.json`)
       .then((response) => response.json())
       .then((json) => (this.data = json))
       .catch((error) => console.error("Error fetching data:", error));

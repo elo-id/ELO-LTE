@@ -59,7 +59,8 @@ export default {
   methods: {
     async loadLocations() {
       try {
-        const response = await fetch("/data/landdata.json");
+        const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+        const response = await fetch(`${baseURL}/data/landdata.json`);
         if (!response.ok) throw new Error("Failed to load data");
         const data = await response.json();
         this.locations = data;

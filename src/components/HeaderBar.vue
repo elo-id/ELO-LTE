@@ -85,7 +85,7 @@
                 >
               </li>
               <li>
-                <router-link to="/dashboard/landmap-v2">- Land Map</router-link>
+                <router-link to="/dashboard/landmap">- Land Map</router-link>
               </li>
               <li>
                 <router-link to="/dashboard/e-office">- E Office</router-link>

@@ -196,7 +196,8 @@ export default {
     };
   },
   created() {
-    fetch("/data/eassetsmanagementdata.json")
+    const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+    fetch(`${baseURL}/data/eassetsmanagementdata.json`)
       .then((response) => response.json())
       .then((json) => {
         this.data = json;

@@ -59,7 +59,8 @@ export default {
   },
   async created() {
     try {
-      const response = await fetch("/data/component_chartsdata.json");
+      const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+      const response = await fetch(`${baseURL}/data/component_chartsdata.json`);
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
       this.data = await response.json();

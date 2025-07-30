@@ -26,7 +26,8 @@ export default {
   },
   async created() {
     try {
-      const res = await fetch("/data/meetingboarddata.json");
+      const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+      const res = await fetch(`${baseURL}/data/meetingboarddata.json`);
       const data = await res.json();
       console.log("Fetch response status:", res.status);
       this.events = data.map(event => ({

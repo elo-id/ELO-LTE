@@ -39,7 +39,8 @@ export default {
     };
   },
   async mounted() {
-    const response = await fetch("/data/eprocurementdata.json");
+    const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+    const response = await fetch(`${baseURL}/data/eprocurementdata.json`);
     this.allData = await response.json();
   },
 };

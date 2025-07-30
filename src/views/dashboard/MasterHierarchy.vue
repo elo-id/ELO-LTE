@@ -50,7 +50,8 @@ export default {
   },
   async created() {
     try {
-      const response = await fetch('/data/masterhierarchydata.json');
+      const baseURL = window.location.origin + "/ix-Contelo/plugin/de.elo.ix.plugin.proxy/wf/apps/app/elo.lte";
+      const response = await fetch(`${baseURL}/data/masterhierarchydata.json`);
       const rawTables = await response.json();
       // console.log(rawTables);
       this.tables = Array.isArray(rawTables)
