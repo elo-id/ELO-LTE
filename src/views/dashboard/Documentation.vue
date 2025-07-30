@@ -127,6 +127,14 @@
         alt="VueJS File Structure"
         class="full-width-image"
       />
+
+      <h3 class="mb-0">Possible Error (Static Dummy Data doesn't loaded)</h3>
+      <p class="mt-0">
+        If you have an issues where your data not loaded when build you
+        application into ELO-wf, try to add baseURL on your fetch method. See
+        the example below :
+      </p>
+      <pre><code class="language-bash" v-html="highlightedBaseURL"></code></pre>
     </div>
     <footer class="site-footer">
       &copy; 2025 ELO Digital Office Indonesia. All rights reserved.
@@ -145,6 +153,7 @@ export default {
       mainJs: "",
       vueConfig: "",
       libraryVersion: "",
+      baseURL: "",
       fileStructureImage,
     };
   },
@@ -158,6 +167,9 @@ export default {
     highlightedLibraryVersion() {
       return Prism.highlight(this.libraryVersion, Prism.languages.js, "js");
     },
+    highlightedBaseURL() {
+      return Prism.highlight(this.baseURL, Prism.languages.js, "js");
+    },
   },
   async mounted() {
     const baseURL =
@@ -168,11 +180,13 @@ export default {
       fetch(`${baseURL}/mainjs.txt`).then((res) => res.text()),
       fetch(`${baseURL}/vueconfigjs.txt`).then((res) => res.text()),
       fetch(`${baseURL}/libraryversion.txt`).then((res) => res.text()),
+      fetch(`${baseURL}/base_url.txt`).then((res) => res.text()),
     ])
-      .then(([main, vue, libraryVersion]) => {
+      .then(([main, vue, libraryVersion, baseURL]) => {
         this.mainJs = main;
         this.vueConfig = vue;
         this.libraryVersion = libraryVersion;
+        this.baseURL = baseURL;
 
         this.$nextTick(() => {
           Prism.highlightAll();
