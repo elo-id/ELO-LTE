@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Identify Site location",
+    "time": "7:00 AM",
+    "start": "2025-07-01T00:00:00",
+    "end": "2025-07-07T00:00:00",
+    "color": "#4285F4",
+    "agenda": ["Visit location", "Collect data", "Site inspection"]
+  },
+  {
+    "id": 2,
+    "title": "Soil test approval",
+    "time": "7:00 AM",
+    "start": "2025-08-03T00:00:00",
+    "end": "2025-08-06T00:00:00",
+    "color": "#F4B400",
+    "agenda": ["Prepare samples", "Submit report"]
+  },
+  {
+    "id": 3,
+    "title": "Quality Testing (Internal)",
+    "time": "7:00 AM",
+    "start": "2025-08-15T00:00:00",
+    "end": "2025-08-17T00:00:00",
+    "color": "#0F9D58",
+    "agenda": ["Run tests", "Analyze results", "Document findings"]
+  },
+  {
+    "id": 4,
+    "title": "Site Survey",
+    "time": "8:00 AM",
+    "start": "2025-08-10T00:00:00",
+    "end": "2025-08-10T00:00:00",
+    "color": "#DB4437",
+    "agenda": ["Survey site", "Take measurements", "Photograph site"]
+  },
+  {
+    "id": 5,
+    "title": "Material Delivery",
+    "time": "9:00 AM",
+    "start": "2025-08-25T00:00:00",
+    "end": "2025-08-25T00:00:00",
+    "color": "#F4B400",
+    "agenda": ["Coordinate delivery", "Inspect materials", "Sign receipt"]
+  },
+  {
+    "id": 6,
+    "title": "Team Meeting",
+    "time": "10:00 AM",
+    "start": "2026-06-30T00:00:00",
+    "end": "2026-06-30T00:00:00",
+    "color": "#0F9D58",
+    "agenda": ["Review progress", "Discuss challenges", "Plan next steps"]
+  },
+  {
+    "id": 7,
+    "title": "Initial Design Review",
+    "time": "9:00 AM",
+    "start": "2026-07-03T00:00:00",
+    "end": "2026-07-03T00:00:00",
+    "color": "#4285F4",
+    "agenda": ["Review initial design", "Feedback from stakeholders", "Adjustments based on feedback"]
+  },
+  {
+    "id": 8,
+    "title": "Procurement Kickoff",
+    "time": "10:00 AM",
+    "start": "2026-07-06T00:00:00",
+    "end": "2026-07-06T00:00:00",
+    "color": "#F4B400",
+    "agenda": ["Define procurement requirements", "Set timelines", "Identify suppliers"]
+  },
+  {
+    "id": 9,
+    "title": "Site Preparation",
+    "time": "8:00 AM",
+    "start": "2026-07-12T00:00:00",
+    "end": "2026-07-14T00:00:00",
+    "color": "#0F9D58",
+    "agenda": ["Clear the site", "Prepare foundation", "Install temporary infrastructure"]
+  },
+  {
+    "id": 10,
+    "title": "Final Design Approval",
+    "time": "7:00 AM",
+    "start": "2026-07-15T00:00:00",
+    "end": "2026-07-15T00:00:00",
+    "color": "#DB4437",
+    "agenda": ["Review final design", "Approve modifications", "Sign off for production"]
+  }
+]

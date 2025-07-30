@@ -1,0 +1,224 @@
+{
+  "projectStatus": {
+    "Unfinished": 4,
+    "In-Progress": 7,
+    "Cancel": 2,
+    "Finished": 12
+  },
+  "projectType": {
+    "IT": {
+      "Waterfall": 1,
+      "Scrum": 2,
+      "Adaptive Project Framework": 2,
+      "Kanban": 3,
+      "Extreme Programming": 1,
+      "Critical Path Method": 1,
+      "Extra": 1
+    },
+    "Legal": {
+      "Waterfall": 2,
+      "Scrum": 1,
+      "Adaptive Project Framework": 1,
+      "Kanban": 1,
+      "Extreme Programming": 3,
+      "Critical Path Method": 2,
+      "Extra": 2
+    },
+    "Finance": {
+      "Waterfall": 2,
+      "Scrum": 1,
+      "Adaptive Project Framework": 1,
+      "Kanban": 1,
+      "Extreme Programming": 1,
+      "Critical Path Method": 1,
+      "Extra": 1
+    }
+  },
+  "finishedStatus": {
+    "On-Progress": 5,
+    "Delayed": 3
+  },
+  "projects": [
+    {
+      "name": "Cyber Security",
+      "status": "In-Progress",
+      "startDate": "20 Okt 2024",
+      "endDate": "20 Okt 2025",
+      "percentage": "100%",
+      "tasks": [
+        {
+          "taskName": "Design UI",
+          "projectStage": "Planning",
+          "dueDate": "10 Nov 2024",
+          "mainPIC": "Joshua",
+          "status": "On Track",
+          "weekId": "W1"
+        },
+        {
+          "taskName": "UX Testing",
+          "projectStage": "Planning",
+          "dueDate": "10 Nov 2024",
+          "mainPIC": "Akis",
+          "status": "On Track",
+          "weekId": "W1"
+        },
+        {
+          "taskName": "Frontend",
+          "projectStage": "Planning",
+          "dueDate": "10 Nov 2024",
+          "mainPIC": "Raphael",
+          "status": "On Track",
+          "weekId": "W2"
+        },
+        {
+          "taskName": "Backend",
+          "projectStage": "Planning",
+          "dueDate": "10 Nov 2024",
+          "mainPIC": "Winston",
+          "status": "On Track",
+          "weekId": "W3"
+        },
+        {
+          "taskName": "Alpha Testing",
+          "projectStage": "Planning",
+          "dueDate": "10 Nov 2024",
+          "mainPIC": "Somantri",
+          "status": "On Track",
+          "weekId": "W4"
+        },
+        {
+          "taskName": "Beta Testing",
+          "projectStage": "Planning",
+          "dueDate": "10 Nov 2024",
+          "mainPIC": "Alice",
+          "status": "On Track",
+          "weekId": "W4"
+        },
+        {
+          "taskName": "Final Testing",
+          "projectStage": "Planning",
+          "dueDate": "10 Nov 2024",
+          "mainPIC": "Alice",
+          "status": "On Track",
+          "weekId": "W5"
+        },
+        {
+          "taskName": "Deploying",
+          "projectStage": "Planning",
+          "dueDate": "10 Nov 2024",
+          "mainPIC": "Alice",
+          "status": "On Track",
+          "weekId": "W5"
+        }
+      ],
+      "weekly_progress": [
+        {
+          "week": "W1",
+          "plan": "20%",
+          "actual": "20%",
+          "summary": "Achieved"
+        },
+        {
+          "week": "W2",
+          "plan": "40%",
+          "actual": "40%",
+          "summary": "Achieved"
+        },
+        {
+          "week": "W3",
+          "plan": "60%",
+          "actual": "55%",
+          "summary": "Not Achieved"
+        },
+        {
+          "week": "W4",
+          "plan": "80%",
+          "actual": "85%",
+          "summary": "Achieved"
+        },
+        {
+          "week": "W5",
+          "plan": "100%",
+          "actual": "100%",
+          "summary": "Achieved"
+        }
+      ]
+    },
+    {
+      "name": "Project B",
+      "status": "In-Progress",
+      "startDate": "20 Okt 2024",
+      "endDate": "20 Okt 2025",
+      "percentage": "90%",
+      "tasks": [
+        {
+          "taskName": "Backend Setup",
+          "projectStage": "Development",
+          "dueDate": "01 Dec 2024",
+          "mainPIC": "Bob",
+          "status": "Delayed",
+          "weekId": "W1"
+        }
+      ],
+      "weekly_progress": [
+        {
+          "week": "W1",
+          "plan": "20%",
+          "actual": "15%",
+          "summary": "Behind Schedule"
+        },
+        {
+          "week": "W2",
+          "plan": "40%",
+          "actual": "45%",
+          "summary": "Not Yet Started"
+        },
+        {
+          "week": "W3",
+          "plan": "60%",
+          "actual": "60%",
+          "summary": "Not Yet Started"
+        },
+        {
+          "week": "W4",
+          "plan": "80%",
+          "actual": "80%",
+          "summary": "Not Yet Started"
+        },
+        {
+          "week": "W5",
+          "plan": "100%",
+          "actual": "90%",
+          "summary": "Not Yet Started"
+        }
+      ]
+    },
+    {
+      "name": "Project C",
+      "status": "Not-Yet-Started",
+      "startDate": "20 Okt 2024",
+      "endDate": "20 Okt 2025",
+      "percentage": "0%",
+      "tasks": [],
+      "weekly_progress": []
+    },
+    {
+      "name": "Project D",
+      "status": "Not-Yet-Started",
+      "startDate": "20 Okt 2024",
+      "endDate": "20 Okt 2025",
+      "percentage": "0%",
+      "tasks": [],
+      "weekly_progress": []
+    },
+    {
+      "name": "Project E",
+      "status": "Cancelled",
+      "startDate": "20 Okt 2024",
+      "endDate": "20 Okt 2025",
+      "percentage": "0%",
+      "tasks": [],
+      "weekly_progress": []
+    }
+  ]
+}

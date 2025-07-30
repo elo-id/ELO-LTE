@@ -1,0 +1,296 @@
+<template>
+  <div class="calendar-container">
+    <div class="calendar-label">Calendar</div>
+    <div class="calendar-header">
+      <button @click="prevMonth">‹</button>
+      <span>{{ monthName }} {{ currentYear }}</span>
+      <button @click="nextMonth">›</button>
+    </div>
+
+    <div class="calendar-grid">
+      <div class="day-header" v-for="day in daysOfWeek" :key="day">
+        {{ day }}
+      </div>
+
+      <div
+        class="day-cell"
+        v-for="(day, index) in calendarDays"
+        :key="index"
+        :class="{ 'not-current-month': !day.currentMonth }"
+      >
+        <div class="day-number">{{ day.date.getDate() }}</div>
+
+        <div
+          v-for="event in eventsForDay(day.date)"
+          :key="event.id"
+          class="event-bar"
+          :style="eventStyle(event)"
+          @click="openEvent(event)"
+        >
+          <span class="event-time">({{ event.time }}) </span>
+          <span class="event-title">{{ event.title }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- New Modal Component -->
+    <EventModal
+      v-if="selectedEvent"
+      :event="selectedEvent"
+      @close="closeModal"
+      @download="downloadCalendar"
+    />
+  </div>
+</template>
+
+<script>
+import EventModal from "@/components/MeetingBoard/EventModal.vue";
+
+export default {
+  name: "AdvancedCalendar",
+  components: {
+    EventModal,
+  },
+  props: {
+    events: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data() {
+    return {
+      currentMonth: new Date().getMonth(),
+      currentYear: new Date().getFullYear(),
+      selectedEvent: null,
+      daysOfWeek: [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+    };
+  },
+  computed: {
+    monthName() {
+      return new Date(this.currentYear, this.currentMonth).toLocaleString(
+        "default",
+        { month: "long" }
+      );
+    },
+    calendarDays() {
+      const start = new Date(this.currentYear, this.currentMonth, 1);
+      const end = new Date(this.currentYear, this.currentMonth + 1, 0);
+      const days = [];
+
+      const startDay = start.getDay();
+      const totalDays = end.getDate();
+
+      // Leading days from previous month
+      for (let i = 0; i < startDay; i++) {
+        const date = new Date(
+          this.currentYear,
+          this.currentMonth,
+          -(startDay - 1 - i)
+        );
+        days.push({ date, currentMonth: false });
+      }
+
+      // Current month days
+      for (let d = 1; d <= totalDays; d++) {
+        days.push({
+          date: new Date(this.currentYear, this.currentMonth, d),
+          currentMonth: true,
+        });
+      }
+
+      // Trailing days from next month
+      const totalCells = Math.ceil(days.length / 7) * 7;
+      for (let i = days.length; i < totalCells; i++) {
+        const dayOffset = i - days.length;
+        const date = new Date(
+          this.currentYear,
+          this.currentMonth + 1,
+          1 + dayOffset
+        );
+        days.push({ date, currentMonth: false });
+      }
+
+      return days;
+    },
+  },
+  methods: {
+    nextMonth() {
+      if (this.currentMonth === 11) {
+        this.currentMonth = 0;
+        this.currentYear++;
+      } else {
+        this.currentMonth++;
+      }
+    },
+    prevMonth() {
+      if (this.currentMonth === 0) {
+        this.currentMonth = 11;
+        this.currentYear--;
+      } else {
+        this.currentMonth--;
+      }
+    },
+    eventsForDay(date) {
+      return this.events.filter(
+        (event) => date >= event.start && date <= event.end
+      );
+    },
+    eventStyle(event) {
+      return {
+        background: event.color,
+        color: "#fff",
+        padding: "2px 4px",
+        borderRadius: "4px",
+        fontSize: "12px",
+        marginBottom: "2px",
+        cursor: "pointer",
+      };
+    },
+    openEvent(event) {
+      this.selectedEvent = event;
+    },
+    closeModal() {
+      this.selectedEvent = null;
+    },
+    downloadCalendar() {
+      // implement download logic here
+    },
+  },
+};
+</script>
+
+<style scoped>
+.calendar-label {
+  width: 200px;
+  height: 30px;
+  background-color: #0064a0;
+  border: 1px solid #ddd;
+  color: white;
+  font-weight: bold;
+  padding: 6px;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  flex-shrink: 0; /* Prevents shrinking and disrupting the layout */
+}
+
+.calendar-container {
+  width: 100%;
+  max-width: 97%;
+  /* border: 1px solid #ddd; */
+  font-family: sans-serif;
+  margin: 20px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  color: white;
+  background: #0064a0;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  /* border-top-left-radius: 6px;
+  border-top-right-radius: 6px; */
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border: 1px solid #eee;
+}
+
+.day-header {
+  padding: 8px;
+  background: var(--bg);
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  text-align: center;
+}
+
+.day-cell {
+  min-height: 80px;
+  padding: 4px;
+  border: 1px solid #f0f0f0;
+  vertical-align: top;
+  position: relative;
+  font-size: 12px;
+}
+
+.day-number {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.not-current-month {
+  background: var(--bg);
+  color: #bbb;
+}
+
+.event-bar {
+  display: block;
+  background: #888;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-bottom: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.event-bar:hover {
+  background: #555;
+}
+
+@media (max-width: 768px) {
+  .calendar-grid {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* stack into 2 columns on small screens */
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 70vh;
+  }
+
+  .day-header {
+    display: none; /* hide day names, too tight on mobile */
+  }
+
+  .calendar-header span {
+    font-size: 16px; /* smaller month label */
+  }
+
+  .day-cell {
+    min-height: 120px; /* taller cells to fit touch taps */
+    font-size: 14px;
+  }
+
+  .event-bar {
+    font-size: 10px;
+    padding: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-grid {
+    grid-template-columns: 1fr; /* 1 column for very tiny devices */
+  }
+
+  .calendar-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+</style>

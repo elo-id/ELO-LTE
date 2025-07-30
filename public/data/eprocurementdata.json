@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "type": "non-khs",
+    "title": "PENGADAAN ALAT UJI WARNA MINYAK",
+    "unit": "UNIT INDUK WILAYAH NUSA TENGGARA BARAT",
+    "upt": "UPT MATARAM",
+    "category": "PENGADAAN BARANG",
+    "region": "Nusa Tenggara Barat",
+    "datetime": "2025-05-02T10:00:00"
+  },
+  {
+    "id": 2,
+    "type": "non-khs",
+    "title": "Pengadaan LCD Tersebar di Wilayah Unit Induk Transmisi Jawa Bagian Timur dan Bali",
+    "unit": "UNIT INDUK TRANSMISI JAWA",
+    "upt": "BAGIAN TIMUR DAN BALI",
+    "category": "PENGADAAN BARANG",
+    "region": "Jawa Timur",
+    "datetime": "2025-05-02T13:00:00"
+  },
+  {
+    "id": 3,
+    "type": "khs",
+    "title": "PENGADAAN KHS PENGUJIAN ALAT LISTRIK",
+    "unit": "UNIT INDUK DISTRIBUSI JAKARTA",
+    "upt": "UPT JAKARTA TIMUR",
+    "category": "PENGADAAN JASA",
+    "region": "Jakarta",
+    "datetime": "2025-05-03T09:00:00"
+  },
+  {
+    "id": 4,
+    "type": "tender",
+    "title": "Tender Pembangunan Gedung Pelayanan",
+    "unit": "DIVISI INFRASTRUKTUR",
+    "upt": "UPT BANDUNG",
+    "category": "KONSTRUKSI",
+    "region": "Jawa Barat",
+    "datetime": "2025-05-06T10:00:00"
+  },
+  {
+    "id": 5,
+    "type": "tender",
+    "title": "Tender Pengadaan Server Data Center",
+    "unit": "DIVISI TI",
+    "upt": "UPT NASIONAL",
+    "category": "PENGADAAN BARANG",
+    "region": "Jakarta",
+    "datetime": "2025-05-08T14:00:00"
+  },
+  {
+    "id": 6,
+    "type": "tender",
+    "title": "Tender Revitalisasi Jaringan Listrik Area Sumatera",
+    "unit": "DIVISI OPERASI SISTEM",
+    "upt": "UPT MEDAN",
+    "category": "KONSTRUKSI",
+    "region": "Sumatera Utara",
+    "datetime": "2025-05-10T09:30:00"
+  }
+]
